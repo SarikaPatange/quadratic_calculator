@@ -1,4 +1,6 @@
+
 <h1>Quadratic Formula Calculator</h1>
+<h2>ax<sup>2</sup>+bx+c=0</h2>
 <form action="/quadratic_calculator" method="post" id="quadraticForm">
   <div>
     <label for="coefficient_a_input">
@@ -24,24 +26,36 @@
     <input id="coefficient_c_input" type="number" name="c_value" value="<%= @c %>" placeholder="coefficient c">
   </div>
   <br>
-<button type="button" onclick="clearForm()">
-    Clear
-  </button>
-  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <button type="submit">
-    Calculate
-  </button>
-  <br><br>
   <div>
-    <label for="answer">
+    <label for="answer1">
     </label>
 
-    <input id="answer" type="text" name="result" value="Answer: <%= @root1 %>, <%=@root2 %>">
+    <input id="answer1" type="text" name="result1" value="Root 1: <%= @root1 %>" style = "width:300px;">
   </div>
-  
+  <br>
+  <div>
+    <label for="answer2">
+    </label>
+
+    <input id="answer2" type="text" name="result2" value="Root 2: <%=@root2 %>" style = "width:300px;">
+  </div>
+  <br><br>
+  <div>
+    <button type="button" onclick="clearForm()">
+      Clear
+    </button>
+  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <button type="submit">
+      Calculate
+    </button>
+  </div> 
 </form>
 <script>
   function clearForm() {
-    document.getElementById("quadraticForm").reset();
+    document.getElementById("coefficient_a_input").value = "";
+    document.getElementById("coefficient_b_input").value = "";
+    document.getElementById("coefficient_c_input").value = "";
+    document.getElementById("answer1").value = "Root 1: ";
+    document.getElementById("answer2").value = "Root 2: ";
   }
 </script>
