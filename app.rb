@@ -11,13 +11,26 @@ end
 get("/quadratic_calculator") do
   erb(:quadratic_formula_calculator)
 end
-get("/quadratic_results") do
-  @a = params.fetch("coefficient_a")
-  @b = params.fetch("coefficient_b")
-  @c = params.fetch("coefficient_c")
+post("/quadratic_calculator") do
+  @a = params.fetch("a_value").to_f
+  @b = params.fetch("b_value").to_f
+  @c = params.fetch("c_value").to_f
+  @d = @b**2 - 4*@a*@c   #discriminant
+  @denominator  = 2 * @a
   
-  @answer = @a*x**2 + @b*x + @c
-  
- 
-  erb(:quadratic_formula_results)
+  @x = (-@b + @d**0.5) / (2*@a) || @x = (-@b - @d**0.5) / (2*@a)
+  @result = @x
+  if @d > 0
+    @root1 = (-@b + (@d ** 0.5)) / @denominator
+    @root2 = (-@b - (@d ** 0.5)) / @denominator
+    
+  elsif @d == 0
+    @root = -@b / @denominator
+    
+  else
+    @root = []
+  end
+    erb(:quadratic_formula_calculator)
 end
+
+  

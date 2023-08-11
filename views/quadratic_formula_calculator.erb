@@ -1,42 +1,47 @@
 <h1>Quadratic Formula Calculator</h1>
-<form action="/quadratic_results">
+<form action="/quadratic_calculator" method="post" id="quadraticForm">
   <div>
     <label for="coefficient_a_input">
       a =
     </label>
 
-    <input id="coefficient_a_input" text="text" name="a_value" placeholder="coefficient a">
+    <input id="coefficient_a_input" type="number" name="a_value" value="<%= @a %>" placeholder="coefficient a">
   </div>
 <br>
   <div>
     <label for="coefficient_b_input">
-      a =
+      b =
     </label>
 
-    <input id="coefficient_b_input" text="text" name="b_value" placeholder="coefficient b">
+    <input id="coefficient_b_input" type="number" name="b_value" value="<%= @b %>" placeholder="coefficient b">
   </div>
 <br>
   <div>
     <label for="coefficient_c_input">
-      a =
+      c =
     </label>
 
-    <input id="coefficient_c_input" text="text" name="c_value" placeholder="coefficient c">
+    <input id="coefficient_c_input" type="number" name="c_value" value="<%= @c %>" placeholder="coefficient c">
   </div>
   <br>
-<button>
+<button type="button" onclick="clearForm()">
     Clear
   </button>
   &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-  <button>
+  <button type="submit">
     Calculate
   </button>
   <br><br>
   <div>
     <label for="answer">
-  
     </label>
 
-    <input id="answer" text="text" name="result" value="Answer: ">
+    <input id="answer" type="text" name="result" value="Answer: <%= @root1 %>, <%=@root2 %>">
   </div>
+  
 </form>
+<script>
+  function clearForm() {
+    document.getElementById("quadraticForm").reset();
+  }
+</script>
